@@ -12,7 +12,9 @@ driver.minimize_window()
 login(driver)
 
 # marks fetching link
-url = "https://www.hackerrank.com/contests/hacktime-1/challenges"
+
+url = "https://www.hackerrank.com/contests/"+ input("Enter Contest Name") +"/challenges"
+
 
 
 driver.get(url)
