@@ -4,7 +4,7 @@ from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.keys import Keys 
 from selenium.webdriver.common.by import By 
 import time 
-from mods import login, logout
+from mods import login, logout, isValidUrl, writeSimpleRecord
 
 driver = webdriver.Chrome('chromedriver.exe')
 driver.minimize_window()
@@ -13,7 +13,10 @@ login(driver)
 
 # marks fetching link
 
-url = "https://www.hackerrank.com/contests/"+ input("Enter Contest Name") +"/challenges"
+contest_name = input("Enter Contest Name")
+marks = int(input("ENter Marks"))
+section = input("ENter Section")
+url = "https://www.hackerrank.com/contests/"+ contest_name +"/challenges"
 
 
 
@@ -56,8 +59,10 @@ while isValidUrl(driver,fix_url+"/"+str(url_next)):
 
 
 
+
 wait = WebDriverWait(driver, 1200)
 time.sleep(3)
 
 logout(driver)
 driver.close()
+writeSimpleRecord(student_scoreboard,contest_name,marks,section)
